@@ -11,4 +11,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-proyecto';
+  btnDisabled = true; 
+
+  toggleButton() {
+    this.btnDisabled = !this.btnDisabled; 
+  }
 }
