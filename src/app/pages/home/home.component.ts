@@ -10,6 +10,7 @@ import { title } from 'process';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
+
 export class HomeComponent {
   tasks = signal<Task[]>(
     [
@@ -36,19 +37,19 @@ export class HomeComponent {
     ]
   ); 
 
-  changeHandler (event: Event) {
-    const input = event.target as HTMLInputElement; 
-    const newTask = input.value; 
-    this.addTask(newTask); 
-  }
-
   addTask (title:string) {
     const newTask = {
       id: Date.now(), 
       title, 
       completed: false, 
     }; 
-    this.tasks.update((tasks) => [...tasks, newTask]);  
+    return newTask; 
+  }
+
+  changeHandler (event: Event) {
+    const input = event.target as HTMLInputElement; 
+    const newTask = input.value; 
+    this.addTask(newTask); 
   }
 
   deleteTask (index:number) {
